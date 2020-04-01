@@ -1,0 +1,88 @@
+/* GRID */
+.container {
+	max-width: 120rem;
+	margin: 8rem auto;
+	background-color: $color-grey-light-2;
+	box-shadow: $shadow-dark;
+
+	min-height: 50rem;
+
+	@media only screen and (max-width: $bp-largest) {
+		margin: 0;
+		max-width: 100%;
+		width: 100%;
+	}
+}
+
+.content {
+	// Content es el padre de sidebar y hotel-view, por lo que tendra el flexbox
+	display: flex;
+
+	@media only screen and (max-width: $bp-medium) {
+		flex-direction: column;
+		// Para que esté debajo del header cuando se use un dispositivo móvil.
+	}
+}
+
+.sidebar {
+	background-color: $color-grey-dark-1;
+
+	flex: 0 0 18%; // grow shrink basis (sólo para elementos flex, declarados en el padre).
+	display: flex; // Especificamos que el elementos es flex, sus hijos seran items flex.
+	flex-direction: column; // Especificamos la dirección del eje principal.
+	justify-content: space-between; // alineamos las columnas con espacios en blanco entre cada item.
+}
+
+.hotel-view {
+	background-color: $color-white;
+
+	flex: 1; // Ocupa todo el ancho disponible
+}
+
+/*	Hotel view se divide en cuatro partes: gallery y overview como componentes independientes,
+*	y luego tenemos detail y cta que están directamente relacionados con su contenido.
+**/
+/* DETAIL */
+.detail {
+	font-size: 1.4rem;
+	display: flex;
+	padding: 4.5rem;
+	background-color: $color-grey-light-1;
+	border-bottom: $line;
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 3rem;
+	}
+	@media only screen and (max-width: $bp-small) {
+		flex-direction: column;
+	}
+}
+
+/*	Detail posee a descripción y a user-reviews. Descripción lo hemos creado como
+*	un componente independiente. Pero no para user-reviews. Veo más a user-reviews un
+*	layer de de dos componentes de review independientes.
+**/
+.user-reviews {
+	flex: 1;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* CTA */
+.cta {
+	padding: 3.5rem 0;
+	text-align: center;
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 2.5rem 0;
+	}
+
+	&__book-now {
+		font-size: 1.5rem;
+		font-weight: 300;
+		text-transform: uppercase;
+		margin-bottom: 2.5rem;
+	}
+}

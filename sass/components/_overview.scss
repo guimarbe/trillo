@@ -1,0 +1,83 @@
+.overview {
+	border-bottom: $line;
+	display: flex;
+	align-items: center;
+	// justify-content: space-between; // no permite hacer lo que queremos
+
+	&__heading {
+		font-size: 2.25rem;
+		font-weight: 300;
+		text-transform: uppercase;
+		letter-spacing: .1rem;
+		padding: 1.5rem 3rem;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+			padding: 1.25rem 2rem;
+		}
+		@media only screen and (max-width: $bp-smallest) {
+			flex: 1;
+		}
+	}
+
+	&__stars {
+		margin-right: auto; // truco para poner espacio entre stars y location
+		display: flex;
+		@media only screen and (max-width: $bp-smallest) {
+			display: none;
+		}
+	}
+
+	&__icon-star,
+	&__icon-location {
+		width: 1.75rem;
+		height: 1.75rem;
+		fill: $color-primary;
+	}
+
+	&__location {
+		font-size: 1.2rem;
+		display: flex;
+		vertical-align: center;
+	}
+
+	&__icon-location {
+		margin-right: .5rem;
+	}
+
+	&__rating {
+		background-color: $color-primary;
+		color: $color-white;
+		padding: 0 2.25rem;
+		margin-left: 3rem;
+		align-self: stretch;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		@media only screen and (max-width: $bp-small) {
+			padding: 1.8rem;
+		}
+	}
+
+	&__rating-average {
+		font-size: 2.25rem;
+		font-weight: 300;
+		margin-bottom: -.3rem;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: 1.8rem;
+		}
+	}
+
+	&__rating-count {
+		font-size: .8rem;
+		text-transform: uppercase;
+
+		@media only screen and (max-width: $bp-small) {
+			font-size: .5rem;
+		}
+	}
+}

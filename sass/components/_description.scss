@@ -1,0 +1,93 @@
+.description {
+	background-color: $color-white;
+	box-shadow: $shadow-light;
+	padding: 3rem;
+	margin-right: 4.5rem;
+	flex: 0 0 60%; // grow=0 shrink=0 basis=60%
+
+	@media only screen and (max-width: $bp-medium) {
+		padding: 2rem;
+		margin-right: 3rem;
+	}
+	@media only screen and (max-width: $bp-small) {
+		margin-right: 0;
+		margin-bottom: 3rem;
+	}
+}
+
+/* Elementos del bloque descripcion (Componentes dependientes)  */
+.paragraph {
+	&:not(:last-of-type) {
+		margin-bottom: 2rem;
+		// Truco para aplicar márgen a todos los párrafos menos el último.
+	}
+}
+
+.list {
+	list-style: none;
+	margin: 3rem 0;
+	padding: 3rem 0;
+	border-top: $line;
+	border-bottom: $line;
+
+	display: flex;
+	flex-wrap: wrap;
+
+	&__item {
+		// Con esto y flex wrap hacemos que estén 2 items por línea
+		flex: 0 0 50%;
+		margin-bottom: .7rem;
+	}
+
+	// Iconos de la lista
+	&__item::before {
+		content: "";
+		display: inline-block;
+		height: 1.2rem;
+		width: 1.2rem;
+		margin-right: .7rem;
+
+		// Navegadores web viejos
+		background-image: url(../img/SVG/chevron-thin-right.svg);
+		background-size: cover;
+
+		// Navegadores web modernos - mask (similar al clip de natours)
+		@supports (-webkit-mask-image: url()) or (mask-image: url()) {
+			background-color: $color-primary;
+			-webkit-mask-image: url(../img/SVG/chevron-thin-right.svg);
+			-webkit-mask-size: cover;
+			mask-image: url(../img/SVG/chevron-thin-right.svg);
+			mask-size: cover;
+			// Quitar el background si tiene soporte por el navegador
+			background-image: none;
+		}
+	}
+}
+
+.recommend {
+	font-size: 1.3rem;
+	color: $color-grey-dark-3;
+
+	display: flex;
+	align-items: center;
+
+	&__count {
+		margin-right: auto;
+	}
+
+	&__friends {
+		display: flex;
+	}
+
+	&__photo {
+		box-sizing: content-box; // Esto es necesario para añadir el borde y quede bien al juntar los avátares.
+		height: 4rem;
+		width: 4rem;
+		border-radius: 50%;
+		border: 3px solid $color-white;
+
+		&:not(:last-child) {
+			margin-right: -1.5rem;
+		}
+	}
+}

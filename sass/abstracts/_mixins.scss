@@ -1,0 +1,46 @@
+/*	Las dos funciones van cogidas de la mano. Hacen un efecto de :hover a los elementos
+*	.side-nav__item:before y user-nav__item:before.
+**/
+@mixin hoverFX {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 3px;
+	background-color: $color-primary;
+	transform: scaleY(0);
+	transition: transform .2s,
+				width .4s cubic-bezier(1, 0, 0, 1) .2s,
+				background-color .1s;
+}
+
+@mixin hoverFX--hover {
+	transform: scaleY(1);
+	width: 100%;
+}
+
+/*	Está función es para crear los dos dropdowns que hay: el de usuario y el chat.
+*	.user-nav__user-dropdown y .user-nav__notification-dropdown.
+**/
+@mixin dropdown {
+	position: absolute;
+	top: 100%;
+	right: -.1rem;
+	list-style: none;
+	background-color: $color-grey-light-2;
+	//border: 1px solid rgba($color-grey-light-4, .4); //explicación abajo
+	box-shadow: 0 1rem 3rem rgba($color-black, .2);
+	opacity: 0;
+	visibility: hidden;
+	z-index: 5;
+	transition: all .2s;
+
+	display: flex;
+	flex-direction: column;
+	/*	Tengo un pequeño dilema de diseño con el borde y no sé resolverlo.
+	*	En general, queda más consistente que el dropdown tenga un borde más oscurecido
+	*	pero al hacer hover, no me gusta que se vean los bordes por encima del color
+	*	principal que sale :before. He intentado ponerle bordes, pero no funciona.
+	**/
+}
